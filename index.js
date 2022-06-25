@@ -29,11 +29,9 @@ mongoose
             useUnifiedTopology: true
         }
     )
-    .then(() => app.listen(
-        process.env.PORT, 
-        () => console.log('App listening at port', process.env.PORT)
-        )
-    )
+    .then(() => app.listen(process.env.PORT || 8000, '0.0.0.0', () => { //deploy heroku with ip '0.0.0.0'
+      console.log('Server is running.');
+    });)
     .catch(err => console.log(err));
 
 //usage of routes
